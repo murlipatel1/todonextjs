@@ -11,10 +11,10 @@ export async function GET() {
       expires: new Date(0),
     });
     return response;
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
       {
-        error: error.message,
+        error: error,
       },
       { status: 500 }
     );

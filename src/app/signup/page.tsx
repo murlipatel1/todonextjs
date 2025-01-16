@@ -5,12 +5,16 @@ import {BiLoaderAlt} from "react-icons/bi";
 import axios from "axios";
 import {useState} from "react";
 import {useFormik} from "formik";
-
+type UserSchema ={
+	email: string;
+	password: string;
+	username: string;
+}
 export default function SignupPage() {
 	const router = useRouter();
 	const [isLoading, setLoading] = useState(false);
 
-	const onSignup = async (values: any) => {
+	const onSignup = async (values:UserSchema) => {
 		try {
 			setLoading(true);
 			const response = await axios.post(`/api/users/signup`, values);
@@ -22,10 +26,10 @@ export default function SignupPage() {
 				
 				console.log(responseData.message);
 			}
-		} catch (error: any) {
+		} catch (error) {
 			if (error) {
 				// If server response contains error message, display it
-				console.log(error.response.data.error);
+				console.log(error);
 			} else {
 				// Otherwise, display a generic error message
 				console.log("An error occurred during login. Please try again later.");
@@ -175,7 +179,6 @@ export default function SignupPage() {
 
 						<div>
 							<button
-								onClick={onSignup}
 								type="submit"
 								disabled={
 									!isValid || isSubmitting || Boolean(touched.email && errors.email)

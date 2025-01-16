@@ -11,9 +11,8 @@ export async function PATCH(request: NextRequest) {
         success: true,
         tasks: updatedTasks,
       });
-    } catch (error: any) {
-      console.error(error);
-      return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+    } catch (error) {
+      return NextResponse.json({ error: error }, { status: 500 });
     }
   }
   

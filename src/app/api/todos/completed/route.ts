@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
             task: savedTask,
         });
     } catch (error) {
-        return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+        return NextResponse.json({ error: error }, { status: 500 });
     }
 }
 
@@ -39,6 +39,6 @@ export async function GET(request: NextRequest) {
         const completedTasksCount = await Task.countDocuments({ completed: true });
         return NextResponse.json({ count: completedTasksCount });
     } catch (error) {
-        return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+        return NextResponse.json({ error: error }, { status: 500 });
     }
 }

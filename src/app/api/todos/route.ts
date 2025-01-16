@@ -16,8 +16,7 @@ export async function GET() {
         tasks,
       });
     } catch (error: any) {
-      console.error(error);
-      return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+      return NextResponse.json({ error: error }, { status: 500 });
     }
   }
   
@@ -49,9 +48,8 @@ export async function POST(request: NextRequest) {
           success: true,
           task: savedTask,
       });
-  } catch (error: any) {
-      console.error(error);
-      return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+  } catch (error) {
+      return NextResponse.json({ error: error }, { status: 500 });
   }
 }
 
@@ -78,9 +76,8 @@ export async function PATCH(request: NextRequest) {
         success: true,
         task,
       });
-    } catch (error: any) {
-      console.error(error);
-      return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+    } catch (error) {
+      return NextResponse.json({ error: error }, { status: 500 });
     }
   }
   
@@ -104,9 +101,8 @@ export async function DELETE(request: NextRequest) {
         success: true,
         task: deletedTask,
       });
-    } catch (error: any) {
-      console.error(error);
-      return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+    } catch (error) {
+      return NextResponse.json({ error: error }, { status: 500 });
     }
   }
   

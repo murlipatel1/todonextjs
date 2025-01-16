@@ -2,10 +2,7 @@ import mongoose from "mongoose";
 
 export async function Connect() {
   try {
-    await mongoose.connect(process.env.DATABASE_URL!, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as any);
+    await mongoose.connect(process.env.DATABASE_URL!);
 
     const connection = await mongoose.connection;
     connection.on("connected", () => {

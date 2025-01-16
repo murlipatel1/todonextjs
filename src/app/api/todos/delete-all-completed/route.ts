@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 // DELETE Route: Delete all completed tasks
-export async function DELETE(request: NextRequest) {
+export async function DELETE() {
     try {
       // Delete all tasks where completed is true
       const deletedTasks = await Task.deleteMany({ completed: true });
@@ -13,9 +13,8 @@ export async function DELETE(request: NextRequest) {
         success: true,
         tasks: deletedTasks,
       });
-    } catch (error: any) {
-      console.error(error);
-      return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+    } catch (error) {
+      return NextResponse.json({ error: error }, { status: 500 });
     }
   }
   

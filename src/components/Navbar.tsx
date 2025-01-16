@@ -5,9 +5,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Todo } from "@/context/todo";
 
-type NavbarProps = {
-  onReload: () => void;
-};
 
 const Navbar = () => {
   const router = useRouter();
