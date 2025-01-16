@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import Task from "@/models/todoModels";
+import { Todo } from "@/context/todo";
 
 // POST Route: Add a new task with userId from token
 export async function POST(request: NextRequest) {
@@ -10,8 +11,8 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "Token missing." }, { status: 401 });
         }
 
-        const decodedToken: any = jwt.verify(token, process.env.TOKEN_SECRET_KEY!);
-        const userId = decodedToken.id;
+        const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET_KEY!) as Todo;
+        const userId = decodedToken._id;
 
         const reqBody = await request.json();
         const { task } = reqBody;
