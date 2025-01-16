@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET Route: Fetch count of completed tasks
-export async function GET(request: NextRequest) {
+export async function GET() {
     try {
         const completedTasksCount = await Task.countDocuments({ completed: true });
         return NextResponse.json({ count: completedTasksCount });

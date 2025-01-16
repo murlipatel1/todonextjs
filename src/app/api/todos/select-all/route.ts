@@ -1,8 +1,8 @@
 import Task from "@/models/todoModels";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 // PATCH Route: Select all tasks (mark all as completed)
-export async function PATCH(request: NextRequest) {
+export async function PATCH() {
     try {
       const updatedTasks = await Task.updateMany({}, { completed: true });
   

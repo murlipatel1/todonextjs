@@ -51,13 +51,12 @@ export async function POST(request: NextRequest) {
 		});
 
 		response.cookies.set("token", token, {httpOnly: true});
-		console.log(token)
 		return response;
-	} catch (error: any) {
+	} catch (error) {
 		return NextResponse.json(
 			{
 				error:
-					error.message || "An error occurred during login. Please try again later.",
+					error || "An error occurred during login. Please try again later.",
 			},
 			{status: 500}
 		);

@@ -1,5 +1,5 @@
 import Task from "@/models/todoModels";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 
 // DELETE Route: Delete all completed tasks

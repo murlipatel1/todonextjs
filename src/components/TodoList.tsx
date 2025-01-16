@@ -19,7 +19,7 @@ const TodoList = () => {
   const searchParams = useSearchParams();
   const todosFilter = searchParams.get("todos");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { handleAddTodo, isLoading, setIsLoading } = useTodo();
+  const { isLoading, setIsLoading } = useTodo();
   const router = useRouter();
 
   const onTaskAdded = async (todo: string) => {
@@ -34,8 +34,6 @@ const TodoList = () => {
       }
     } catch (error) {
       console.error("Error adding task:", error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -51,7 +49,9 @@ const TodoList = () => {
   });
 
   useEffect(() => {
+    
     setIsSubmitting(formik.isValid);
+    console.log(isSubmitting);
   }, [formik.isValid]);
 
   async function fetchTodos() {

@@ -10,13 +10,12 @@ const Navbar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const todosFilter = searchParams.get("todos");
-  const [todos, setTodos] = useState<Todo[]>([]);
   const [completedTasks, setCompletedTasks] = useState<number>(0);
   async function fetchTodos() {
     const response = await fetch("/api/todos");
     const data = await response.json();
     if (data.success) {
-      setTodos(data.tasks);
+      console.log("success")
     }
   }
 

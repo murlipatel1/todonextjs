@@ -26,7 +26,7 @@ export default function LoginPage() {
 				router.push("/");
                 console.log(responseData.message);
 			}
-		} catch (error: any) {
+		} catch (error) {
             console.error("An error occurred during login:", error);
 		} finally {
 			setLoginLoading(false);
@@ -46,7 +46,7 @@ export default function LoginPage() {
 				router.push("/");
                 console.log(responseData.message);
 			}
-		} catch (error: any) {
+		} catch (error) {
 			console.error("An error occurred during guest login:", error);
 		} finally {
 			setGuestLoading(false);

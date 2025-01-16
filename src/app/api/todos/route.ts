@@ -15,7 +15,7 @@ export async function GET() {
         success: true,
         tasks,
       });
-    } catch (error: any) {
+    } catch (error) {
       return NextResponse.json({ error: error }, { status: 500 });
     }
   }
