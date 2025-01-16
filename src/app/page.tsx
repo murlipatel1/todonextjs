@@ -4,23 +4,15 @@ import Navbar from "@/components/Navbar";
 import TodoList from "@/components/TodoList";
 import axios from "axios";
 
-type Props = {};
-
-const Page = (props: Props) => {
+const Page = () => {
     const router = useRouter();
-
     const logout = async () => {
         try {
             await axios.get("api/users/logout");
             router.push("/login");
-        } catch (error: any) {
-            console.log("Error logging out:", error.message);
+        } catch (error) {
+            console.log("Error logging out:", error);
         }
-    };
-
-    // Reload the entire page when Navbar or AddTodo changes
-    const triggerFullPageReload = () => {
-        router.refresh();  // This will refresh the entire page.
     };
 
     return (
