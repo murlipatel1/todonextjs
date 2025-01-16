@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 export async function Connect() {
   try {
-    await mongoose.connect(process.env.DATABASE_URL!);
+    await mongoose.connect(process.env.DATABASE_URL!,{serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 30000        });
 
     const connection = await mongoose.connection;
     connection.on("connected", () => {
