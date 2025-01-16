@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import TodoList from "@/components/TodoList";
 import axios from "axios";
-
+import { Suspense } from "react";
 const Page = () => {
     const router = useRouter();
     const logout = async () => {
@@ -17,6 +17,7 @@ const Page = () => {
 
     return (
         <>
+		<Suspense fallback={<div>Loading...</div>}>
             <main className="p-5 inset-0 mx-auto md:w-[75vh]">
                 <div className="flex justify-end p-2">
                     <button onClick={logout} className="bg-red-600 rounded-md p-2">
@@ -27,8 +28,9 @@ const Page = () => {
                     TODO APP
                 </h1>
                 <Navbar />
-                <TodoList/>
+                <TodoList />
             </main>
+			</Suspense>
         </>
     );
 };
