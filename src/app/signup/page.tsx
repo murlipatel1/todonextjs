@@ -17,7 +17,7 @@ export default function SignupPage() {
 	const onSignup = async (values:UserSchema) => {
 		try {
 			setLoading(true);
-			const response = await axios.post(`/api/users/signup`, values);
+			const response = await axios.post(`/api/users/signup`,values);
 			const responseData = response.data;
 
 			if (!responseData.error) {
@@ -82,7 +82,7 @@ export default function SignupPage() {
 				</div>
 
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<form className="space-y-6" onSubmit={handleSubmit} noValidate>
+					<form className="space-y-6" onSubmit={()=>{handleSubmit(); }} noValidate>
 						<div>
 							<label
 								htmlFor="email"
